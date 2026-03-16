@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('bedrijven', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->text('description')->nullable();
+            $table->string('website')->nullable();
+            $table->string('location')->nullable();
             $table->timestamps();
         });
     }
