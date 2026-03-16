@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('student_interesses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('student_id')->constraint('students')->cascadeOnDelete(); //constraint is gewoon een foreign key maken maar dan sneller
+            $table->unsignedBigInteger('interesse_id')->constraint('interesses')->cascadeOnDelete();
+            $table->integer('current_phase')->nullable();
+            $table->enum('status', ['interested', 'applied', 'rejected', 'accepted'])->default('interested');
+            $table->date('applied_at')->nullable();
             $table->timestamps();
         });
     }

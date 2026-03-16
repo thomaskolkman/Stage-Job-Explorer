@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('solicitaties', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();   
+            $table->foreignId('vacature_id')->constrained('vacatures')->cascadeOnDelete();
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
+            $table->date('applied_at')->nullable();
             $table->timestamps();
+
         });
     }
 
