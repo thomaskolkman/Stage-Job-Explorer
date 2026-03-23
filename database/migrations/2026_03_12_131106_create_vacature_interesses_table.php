@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('vacature_id')->constrained('vacatures')->cascadeOnDelete(); //constraint is gewoon een foreign key maken maar dan sneller
             $table->foreignId('interesse_id')->constrained('interesses')->cascadeOnDelete();
             $table->string('name');
+            $table->string('type')->index();
             $table->timestamps();
         });
     }
