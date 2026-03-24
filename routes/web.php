@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VacatureController;
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('auth.choose-login');
 });
 
 Route::get('/vacatures', [VacatureController::class, 'index'])->name('vacatures.index');
