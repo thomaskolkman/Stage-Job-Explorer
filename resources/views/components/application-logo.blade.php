@@ -1,1 +1,1 @@
-<img src="{{ asset('images/stage-job-explorer-logo.png') }}" class="w-48" {{ $attributes }}>
+<img src="{{ asset('images/stage-job-explorer-logo-1.png') }}" class="w-64" {{ $attributes }}>
