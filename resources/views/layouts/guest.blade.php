@@ -15,16 +15,17 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gradient-to-br from-indigo-950 to-purple-900">
-            <div>
-                <a href="/">
+        <x-galaxy>
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 shadow-md overflow-hidden
+            bg-white/10 backdrop-blur-[2px] rounded-2xl border border-white/10
+            before:content-[''] before:absolute before:inset-0 before:rounded-2xl
+            before:border before:border-white/20 relative before:pointer-events-none">
+                <a href="#" class="flex justify-center mb-8">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a>
-            </div>
-
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
-        </div>
+        </x-galaxy>
+    @stack('scripts')
     </body>
 </html>
