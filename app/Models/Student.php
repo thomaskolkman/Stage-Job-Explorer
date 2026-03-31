@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $fillable = [
+        'user_id',
         'name',
-        'email',
         'address',
         'study',
-        'availability',
         'cv',
-        'current_phase',
+        'study_year',
     ];
 
     public function interesses()
