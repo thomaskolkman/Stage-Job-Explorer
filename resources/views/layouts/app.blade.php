@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,6 +30,7 @@
                 </div>
                 <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
                         <x-app-links :href="route('dashboard')" :active="request()->routeIs('dashboard')">Dashboard</x-app-links>
+                        <x-app-links :href="route('vacatures.index')" :active="request()->routeIs('vacatures.index')">Vacatures</x-app-links>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-4 mt-2 text-sm font-semibold text-left text-white rounded-lg dark:focus:bg-gradient-to-br from-indigo-700 to-indigo-900 dark:hover:bg-gradient-to-br from-indigo-600 to-indigo-800 md:block focus:outline-none focus:shadow-outline">
                             <span>{{ Auth::user()->name }}</span>
