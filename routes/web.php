@@ -14,15 +14,6 @@ Route::get('/', function () {
 route::get('/preferences', [PreferencesController::class, 'index'])->name('preferences.index');
 route::post('/preferences', [PreferencesController::class, 'store'])->name('preferences.store');
 
-
-Route::get('/vacatures', [VacatureController::class, 'index'])->name('vacatures.index');
-Route::get('/vacatures/create', [VacatureController::class, 'create'])->name('vacatures.create');
-Route::post('/vacatures', [VacatureController::class, 'store'])->name('vacatures.store');
-Route::get('/vacatures/{id}', [VacatureController::class, 'show'])->name('vacatures.show');
-Route::get('/vacatures/{id}/edit', [VacatureController::class, 'edit'])->name('vacatures.edit');
-Route::put('/vacatures/{id}', [VacatureController::class, 'update'])->name('vacatures.update');
-route::delete('/vacatures/{id}', [VacatureController::class, 'destroy'])->name('vacatures.destroy');
-
 route::get('/students', [StudentController::class, 'index'])->name('students.index');
 route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
 route::post('/students', [StudentController::class, 'store'])->name('students.store');
