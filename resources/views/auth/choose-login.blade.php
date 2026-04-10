@@ -7,7 +7,7 @@
 
         <div class="flex flex-col gap-4 w-full max-w-md p-4">
 
-            <x-login-button href="{{ route('register') }}" label="Student Login" variant="primary" />
+            <x-login-button href="{{ route('login') }}" label="Student Login" variant="primary" />
 
             <x-login-button href="#" label="Bedrijf Login" variant="secondary" />
 

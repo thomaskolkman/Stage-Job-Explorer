@@ -47,6 +47,48 @@
             @endif
         </div>
 
+        <!-- Address -->
+        <div class="mt-4">
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" value="{{ old('address', $student->address ?? '') }}" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
+
+        <!-- Study -->
+        <div class="mt-4">
+            <x-input-label for="study" :value="__('Study')" />
+            <select id="study" name="study" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
+                @php
+                    $studies = ['Software Development', 'ICT System Engineer', 'ICT Support Technician', 'Medewerker ICT'];
+                @endphp
+                @foreach($studies as $study)
+                    <option value="{{ $study }}" {{ old('study', $student->study ?? '') === $study ? 'selected' : '' }}>{{ $study }}</option>
+                @endforeach
+            </select>
+            <x-input-error :messages="$errors->get('study')" class="mt-2" />
+        </div>
+
+        <!-- Study Year -->
+        <div class="mt-4">
+            <x-input-label for="study_year" :value="__('Study Year')" />
+            <select id="study_year" name="study_year" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
+                @php
+                    $years = ['First Year', 'Second Year', 'Third Year', 'Fourth Year'];
+                @endphp
+                @foreach($years as $year)
+                    <option value="{{ $year }}" {{ old('study_year', $student->study_year ?? '') === $year ? 'selected' : '' }}>{{ $year }}</option>
+                @endforeach
+            </select>
+            <x-input-error :messages="$errors->get('study_year')" class="mt-2" />
+        </div>
+
+        <!-- CV -->
+        <div class="mt-4">
+            <x-input-label for="cv" :value="__('CV (URL)')" />
+            <x-text-input id="cv" class="block mt-1 w-full" type="text" name="cv" value="{{ old('cv', $student->cv ?? '') }}" />
+            <x-input-error :messages="$errors->get('cv')" class="mt-2" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

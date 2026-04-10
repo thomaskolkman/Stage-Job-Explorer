@@ -8,6 +8,6 @@ class Interesse extends Model
 {
     protected $fillable = [
         'name',
-        'description',
+        'type',
     ];
 }
