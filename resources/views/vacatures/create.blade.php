@@ -1,3 +1,4 @@
+<x-app-layout>
 <h1>Create Vacature</h1>
 
 // knop om naar de vacatures index pagina te gaan
@@ -36,3 +37,4 @@
 
     <button type="submit">Create Vacature</button>
 </form>
+</x-app-layout>

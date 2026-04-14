@@ -1,3 +1,4 @@
+<x-app-layout>
 <h1>Vacatures</h1>
 <a href="{{ route('vacatures.create') }}">Create Vacature</a> // deze link gaat naar de create vacature pagina waar je een nieuwe vacature kunt aanmaken
 <ul>
@@ -9,3 +10,5 @@
             <a href="{{ route('vacatures.show', $vacature->id) }}">View Vacature</a> <!-- deze link gaat naar de show vacature pagina waar je de details van de vacature kunt zien -->
         </li>
     @endforeach
+</ul>
+</x-app-layout>
