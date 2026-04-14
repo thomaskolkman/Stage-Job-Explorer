@@ -19,12 +19,14 @@
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
+            <h1>Name</h1>
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
+            <h1>Email</h1>
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
@@ -50,6 +52,7 @@
         <!-- Address -->
         <div class="mt-4">
             <x-input-label for="address" :value="__('Address')" />
+            <h1>Address</h1>
             <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" value="{{ old('address', $student->address ?? '') }}" />
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
@@ -57,6 +60,7 @@
         <!-- Study -->
         <div class="mt-4">
             <x-input-label for="study" :value="__('Study')" />
+            <h1>Study</h1>
             <select id="study" name="study" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
                 @php
                     $studies = ['Software Development', 'ICT System Engineer', 'ICT Support Technician', 'Medewerker ICT'];
@@ -71,6 +75,7 @@
         <!-- Study Year -->
         <div class="mt-4">
             <x-input-label for="study_year" :value="__('Study Year')" />
+            <h1>Study Year</h1>
             <select id="study_year" name="study_year" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
                 @php
                     $years = ['First Year', 'Second Year', 'Third Year', 'Fourth Year'];
@@ -85,6 +90,7 @@
         <!-- CV -->
         <div class="mt-4">
             <x-input-label for="cv" :value="__('CV (URL)')" />
+            <h1>CV (URL)</h1>
             <x-text-input id="cv" class="block mt-1 w-full" type="text" name="cv" value="{{ old('cv', $student->cv ?? '') }}" />
             <x-input-error :messages="$errors->get('cv')" class="mt-2" />
         </div>
