@@ -37,6 +37,9 @@ Route::middleware('auth', 'interesses.ingevuld')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth', 'role:bedrijf')->group(function () {
     Route::get('/vacatures', [VacatureController::class, 'index'])->name('vacatures.index');
     Route::get('/vacatures/create', [VacatureController::class, 'create'])->name('vacatures.create');
     Route::post('/vacatures', [VacatureController::class, 'store'])->name('vacatures.store');
@@ -45,5 +48,4 @@ Route::middleware('auth', 'interesses.ingevuld')->group(function () {
     Route::put('/vacatures/{id}', [VacatureController::class, 'update'])->name('vacatures.update');
     Route::delete('/vacatures/{id}', [VacatureController::class, 'destroy'])->name('vacatures.destroy');
 });
-
 require __DIR__.'/auth.php';
