@@ -29,8 +29,8 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/interesses/select', [InteresseController::class, 'create'])->name('interesses.create');
-    Route::post('/interesses/select', [InteresseController::class, 'store'])->name('interesses.store');
+    Route::get('/interesses/select/{type?}', [InteresseController::class, 'create'])->name('interesses.create');
+    Route::post('/interesses/select/{type?}', [InteresseController::class, 'store'])->name('interesses.store');
 });
 
 Route::middleware('auth', )->group(function () {
