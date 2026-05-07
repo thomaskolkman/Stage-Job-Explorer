@@ -2,9 +2,9 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login.bedrijf') }}">
         @csrf
-            <h2>Student Login</h2>
+            <h2>Bedrijf Login</h2>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -39,7 +39,7 @@
                 </a>
             @endif
 
-            <a class="ms-3 underline text-sm text-white hover:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+            <a class="ms-3 underline text-sm text-white hover:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register.bedrijf') }}">
                 {{ __('Create account') }}
             </a>
 

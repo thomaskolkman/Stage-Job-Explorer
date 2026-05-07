@@ -9,6 +9,10 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\RegisteredBedrijfController;
+use App\Http\Controllers\Auth\LoginBedrijfController;
+use App\Models\User;
+use App\Models\Bedrijf;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -33,6 +37,14 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+
+    Route::get('register/bedrijf', [RegisteredBedrijfController::class, 'create'])
+        ->name('register.bedrijf');
+    Route::post('register/bedrijf', [RegisteredBedrijfController::class, 'store']);
+
+    Route::get('login/bedrijf', [LoginBedrijfController::class, 'create'])
+        ->name('login.bedrijf');
+    Route::post('login/bedrijf', [LoginBedrijfController::class, 'store']);
 });
 
 Route::middleware('auth')->group(function () {

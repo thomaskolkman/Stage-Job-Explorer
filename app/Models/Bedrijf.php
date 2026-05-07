@@ -9,12 +9,14 @@ class Bedrijf extends Model
     protected $table = 'bedrijven';
 
     protected $fillable = [
+        'user_id',
         'name',
         'email',
         'address',
         'description',
         'website',
         'location',
+        'industry',
     ];
 
     public function vacatures()
