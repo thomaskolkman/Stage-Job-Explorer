@@ -4,7 +4,10 @@
 
     <form method="POST" action="{{ route('login.bedrijf') }}">
         @csrf
-            <h2>Bedrijf Login</h2>
+            
+        <div class="mb-4 text-white font-md flex align-center justify-center">
+            <h1>Bedrijf Login</h1>
+        </div>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />

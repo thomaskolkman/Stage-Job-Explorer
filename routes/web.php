@@ -11,9 +11,6 @@ Route::get('/', function () {
     return view('auth.choose-login');
 });
 
-route::get('/preferences', [PreferencesController::class, 'index'])->name('preferences.index');
-route::post('/preferences', [PreferencesController::class, 'store'])->name('preferences.store');
-
 route::get('/students', [StudentController::class, 'index'])->name('students.index');
 route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
 route::post('/students', [StudentController::class, 'store'])->name('students.store');

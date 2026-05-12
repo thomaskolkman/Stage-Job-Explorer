@@ -1,59 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Stage Job Explorer
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is a Laravel-based application for managing internship/job postings, student profiles, and interest matching. It was started as a team assignment and is currently incomplete, so this README is written for the next group picking it up.
 
-## About Laravel
+## What the app contains
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Laravel 12 application using PHP 8.2
+- User authentication and profile pages
+- Role-based access for `bedrijf` (company) users
+- Student CRUD management
+- Interest selection flow for authenticated users
+- Vacancy management for companies via `VacatureController`
+- Models:
+  - `Student`
+  - `Bedrijf`
+  - `Interesse`
+  - `StudentInteresse`
+  - `Vacature`
+  - `Sollicitatie`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Key routes
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- `/` → login / choose login view
+- `/preferences` → user preferences page
+- `/students` → student list and CRUD pages
+- `/interesses/select/{type?}` → interest selection wizard for authenticated users
+- `/vacatures` → vacancy management for `bedrijf` role only
+- `/dashboard` → authenticated dashboard
 
-## Learning Laravel
+The main route file is `routes/web.php`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## How to get the project running
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Install PHP dependencies:
+   - `composer install`
+2. Copy environment file:
+   - `copy .env.example .env`
+3. Generate app key:
+   - `php artisan key:generate`
+4. Run migrations:
+   - `php artisan migrate`
+5. Install frontend dependencies:
+   - `npm install`
+6. Build assets:
+   - `npm run build`
+7. start Vite dev server:
+   - `npm run dev`
+8. I use HERD for the launching so no need for php artisan serve
 
-## Laravel Sponsors
+## Useful commands
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- `php artisan migrate` — run database migrations
+- `php artisan db:seed` — seed data if seeders exist or are added
+- `php artisan test` — run tests
+- `npm run dev` — start Vite dev server
+- `npm run build` — build production assets
 
-### Premium Partners
+## What still needs work
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Authentication flow and user roles are present, but not all views and UI paths are finished.
+- The interest selection wizard saves data to session and student interests, but may need better validation and completion behavior.
+- Vacancy / application workflows are likely incomplete and need end-to-end testing.
+- `resources/views` likely has missing or unfinished Blade templates.
+- No documentation exists yet for the exact business rules and data relationships.
 
-## Contributing
+## Important files to review next
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- `routes/web.php`
+- `app/Http/Controllers/InteresseController.php`
+- `app/Http/Controllers/VacatureController.php`
+- `app/Http/Controllers/StudentController.php`
+- `app/Models/*`
+- `database/migrations/*`
+- `resources/views/*`
+- `app/Http/Middleware/InteressesIngevuld.php` (if present)
 
-## Code of Conduct
+## Notes for the next team
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- The app uses `spatie/laravel-permission` for role management.
+- Companies can only access vacancy routes when assigned the `bedrijf` role.
+- Student interests are stored through the `StudentInteresse` pivot model.
+- The home page currently redirects to an auth choice screen, so login setup is required first.
+- Check `.env` settings for database configuration before running migrations.
