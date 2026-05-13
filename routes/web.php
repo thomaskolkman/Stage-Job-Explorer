@@ -28,10 +28,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/interesses/select', [InteresseController::class, 'create'])->name('interesses.create');
-    Route::post('/interesses/select', [InteresseController::class, 'store'])->name('interesses.store');
+Route::middleware('auth', 'role:student')->group(function () {
+    Route::get('/interesses', [InteresseController::class, 'index'])->name('interesses.index');
+    Route::get('/interesses/create', [InteresseController::class, 'create'])->name('interesses.create');
+    Route::post('/interesses', [InteresseController::class, 'store'])->name('interesses.store');
+    Route::delete('/interesses/{id}', [InteresseController::class, 'destroy'])->name('interesses.destroy');
 });
+
 
 Route::middleware('auth', )->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -83,7 +83,7 @@ class RegisteredBedrijfController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('bedrijven.interesses.create', absolute: false));
+        return redirect(route('dashboard', absolute: false));
         
     }
 }
