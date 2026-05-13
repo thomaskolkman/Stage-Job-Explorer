@@ -13,17 +13,30 @@ class InteresseSeeder extends Seeder
      */
     public function run(): void
     {
-        Interesse::create([
-            'name' => 'PHP',
-            'type' => 'programmeertalen',
-        ]);
-        Interesse::create([
-            'name' => 'CSS',
-            'type' => 'programmeertalen',
-        ]);
-        Interesse::create([
-            'name' => 'HTML',
-            'type' => 'programmeertalen',
-        ]);
+        $interesses = [
+            ['name' => 'PHP', 'type' => 'programmeertalen'],
+            ['name' => 'CSS', 'type' => 'programmeertalen'],
+            ['name' => 'HTML', 'type' => 'programmeertalen'],
+            ['name' => 'Communicatie', 'type' => 'softskills'],
+            ['name' => 'Samenwerken', 'type' => 'softskills'],
+            ['name' => 'Probleemoplossing', 'type' => 'softskills'],
+            ['name' => 'Zelfstandig werken', 'type' => 'softskills'],
+            ['name' => 'Leergierig', 'type' => 'softskills'],
+            ['name' => 'Front end', 'type' => 'stagevoorkeuren'],
+            ['name' => 'Back end', 'type' => 'stagevoorkeuren'],
+            ['name' => 'Stagevergoeding', 'type' => 'stagevoorkeuren'],
+            ['name' => 'Groot bedrijf', 'type' => 'stagevoorkeuren'],
+            ['name' => 'Klein bedrijf', 'type' => 'stagevoorkeuren'],
+            ['name' => 'Februari - Juni', 'type' => 'stageperiode'],
+            ['name' => 'October - Februari', 'type' => 'stageperiode'],
+        ];
+
+        foreach ($interesses as $interesse) {
+            Interesse::updateOrCreate([
+                'name' => $interesse['name'],
+            ], [
+                'type' => $interesse['type'],
+            ]);
+        }
     }
 }
